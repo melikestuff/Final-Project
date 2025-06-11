@@ -1,3 +1,4 @@
+
 export default class Player extends Phaser.Physics.Arcade.Sprite{
     constructor(scene, x, y, texture = "platformer_characters") {
         super(scene, x, y, texture);
@@ -53,19 +54,19 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         if (cursors.left.isDown) {
             player.setAccelerationX(-this.ACCELERATION);
             player.resetFlip();
-            player.anims.play('walk', true);
+            // player.anims.play('walk', true);
             if (player.body.blocked.down) this.vfx.walking.start();
             this.vfx.walking.startFollow(player, player.displayWidth/2-10, player.displayHeight/2-5, false);
         } else if (cursors.right.isDown) {
             player.setAccelerationX(this.ACCELERATION);
             player.setFlip(true, false);
-            player.anims.play('walk', true);
+            // player.anims.play('walk', true);
             if (player.body.blocked.down) this.vfx.walking.start();
             this.vfx.walking.startFollow(player, player.displayWidth/2-10, player.displayHeight/2-5, false);
         } else {
             player.setAccelerationX(0);
             player.setDragX(this.DRAG);
-            player.anims.play('idle');
+            // player.anims.play('idle');
             this.vfx.walking.stop();
         }
 

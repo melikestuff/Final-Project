@@ -9,16 +9,23 @@ export default class LevelOne extends Phaser.Scene {
     preload() {
         this.load.setPath("./assets/");
 
-        this.load.scenePlugin('AnimatedTiles', './lib/AnimatedTiles.js', 'animatedTiles', 'animatedTiles');
+        // this.load.scenePlugin('AnimatedTiles', './lib/AnimatedTiles.js', 'animatedTiles', 'animatedTiles');
         
         //this.load.image("tilemap_tiles", "tilemap_packed.png");
     }
 
     create() {
         let my = this.my
+
         this.add.text(0, 0, 'Hello World', { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif' });
 
-        
+        this.map = this.add.tilemap("platformer-level-1", 16, 16, 180, 60);
+
+        this.tileset = this.map.addTilesetImage("monoChrome_tiles_packed", "platformer_tiles");
+
+        this.groundLayer = this.map.createLayer("Ground", this.tileset, 0, 0);
+
+
         this.player = new Player(this, 100, 200); //This line spawns a new "Prefab" of the player here;
 
     }

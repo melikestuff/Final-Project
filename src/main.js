@@ -1,5 +1,6 @@
 
 //"use strict"
+import Load from './Scenes/Load.js'; 
 import LevelOne from './Scenes/LevelOne.js';
 
 // game config
@@ -9,8 +10,7 @@ let config = {
     render: {
         pixelArt: true
     },
-    width: 800,
-    height: 600,
+    
 
     physics: {
         default: 'arcade',
@@ -19,8 +19,10 @@ let config = {
             debug: true // Set to false if you don't want to see collision boxes
         }
     },
-
-    scene: [LevelOne]
+    width: 1440,
+    height: 900,
+    scene: [Load, LevelOne],
+    fps: { forceSetTimeOut: true, target: 60 }
 };
 
 const game = new Phaser.Game(config);
