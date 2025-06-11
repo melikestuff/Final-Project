@@ -19,8 +19,8 @@ let config = {
             debug: true // Set to false if you don't want to see collision boxes
         }
     },
-    width: 1440,
-    height: 900,
+    width: 640,
+    height: 480,
     scene: [Load, LevelOne],
     fps: { forceSetTimeOut: true, target: 60 }
 };

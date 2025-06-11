@@ -4,14 +4,17 @@ export default class LevelOne extends Phaser.Scene {
     constructor() {
         super('LevelOne');
     }
+    init(){
+        this.SCALE = 0.5;
+    }
 
     // Use preload to load art and sound assets before the scene starts running.
     preload() {
         this.load.setPath("./assets/");
 
-        // this.load.scenePlugin('AnimatedTiles', './lib/AnimatedTiles.js', 'animatedTiles', 'animatedTiles');
+        this.load.scenePlugin('AnimatedTiles', './lib/AnimatedTiles.js', 'animatedTiles', 'animatedTiles');
         
-        //this.load.image("tilemap_tiles", "tilemap_packed.png");
+        
     }
 
     create() {
@@ -26,8 +29,7 @@ export default class LevelOne extends Phaser.Scene {
         this.groundLayer = this.map.createLayer("Ground", this.tileset, 0, 0);
 
         
-        this.player = new Player(this, 100, 200); //This line spawns a new "Prefab" of the player here;
-       
+        
         let spawnPoint = this.map.findObject("Objects", obj => obj.name === "spawn");
         let playerSpawnX = 100; 
         let playerSpawnY = 600; 
@@ -36,7 +38,8 @@ export default class LevelOne extends Phaser.Scene {
             playerSpawnX = spawnPoint.x;
             playerSpawnY = spawnPoint.y;
         }
-
+        this.player = new Player(this, spawnPoint.x, spawnPoint.y).setScale(this.SCALE); //This line spawns a new "Prefab" of the player here;
+       
         this.groundLayer.setCollisionByProperty({
             collides: true
         });
@@ -48,5 +51,5 @@ export default class LevelOne extends Phaser.Scene {
         //The update method in the prefab is it's own scene update()
         //So we have to call the player update func in here
         this.player.update(null, null, null, null); 
-}
+    }
 }
