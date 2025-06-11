@@ -25,12 +25,23 @@ export default class LevelOne extends Phaser.Scene {
 
         this.groundLayer = this.map.createLayer("Ground", this.tileset, 0, 0);
 
+        
+        this.player = new Player(this, 100, 200); //This line spawns a new "Prefab" of the player here;
+       
+        let spawnPoint = this.map.findObject("Objects", obj => obj.name === "spawn");
+        let playerSpawnX = 100; 
+        let playerSpawnY = 600; 
+        
+        if (spawnPoint) {
+            playerSpawnX = spawnPoint.x;
+            playerSpawnY = spawnPoint.y;
+        }
+
         this.groundLayer.setCollisionByProperty({
             collides: true
         });
 
-        this.player = new Player(this, 100, 200); //This line spawns a new "Prefab" of the player here;
-
+        this.physics.add.collider(this.player, this.groundLayer);
     }
 
     update() {
