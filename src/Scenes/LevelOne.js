@@ -21,10 +21,13 @@ export default class LevelOne extends Phaser.Scene {
 
         this.map = this.add.tilemap("platformer-level-1", 16, 16, 180, 60);
 
-        this.tileset = this.map.addTilesetImage("monoChrome_tiles_packed", "platformer_tiles");
+        this.tileset = this.map.addTilesetImage("AssetSheet_Green", "platformer_tiles");
 
         this.groundLayer = this.map.createLayer("Ground", this.tileset, 0, 0);
 
+        this.groundLayer.setCollisionByProperty({
+            collides: true
+        });
 
         this.player = new Player(this, 100, 200); //This line spawns a new "Prefab" of the player here;
 
