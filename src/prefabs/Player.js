@@ -14,6 +14,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         this.DRAG = 2000;
         this.JUMP_VELOCITY = -500;
         this.PARTICLE_VELOCITY = 50;
+        this.MAXSPEED = 175;
+        this.dashing = false;
+        this.dashed = false;
+
 
         //Create control inputs
         this.cursors = scene.input.keyboard.createCursorKeys();
@@ -46,6 +50,28 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         this.vfx.magnetise.stop();
     }
 
+    create() {
+            this.input.keyboard.on('keydown-SPACE', () => {
+            if (this.dashed == false){
+            this.dashed = true;
+            this.dashing = true;
+            this.MAXSPEED = 1000000;
+            if (this.direction) {
+                my.sprite.player.body.setVelocityX(500);
+            } else {
+                my.sprite.player.body.setVelocityX(-500);
+            }
+            this.time.delayedCall(100, () => {
+                this.dashing = false;
+                this.MAXSPEED = 150;
+            }, null, this);
+            this.time.delayedCall(3000, () => {
+                this.dashed = false;
+            }, null, this);
+        }
+        });
+    }
+
      update(groundLayer, spawn, finishGroup, totalCoinsText) {
         const player = this;
         const cursors = this.cursors;
@@ -68,7 +94,20 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
             player.anims.play('idle');
             this.vfx.walking.stop();
         }
-
+        //for dashing
+        if (this.dashing) {
+            my.sprite.player.body.allowGravity = false;
+            my.sprite.player.body.setVelocityY(0);
+            my.sprite.player.setAccelerationY(0);
+        } else {
+            my.sprite.player.body.allowGravity = true;
+        }
+        if (my.sprite.player.body.velocity.x > this.MAXSPEED) {
+            my.sprite.player.setVelocityX(this.MAXSPEED);
+        }
+        if (my.sprite.player.body.velocity.x < this.MAXSPEED * -1) {
+            my.sprite.player.setVelocityX(this.MAXSPEED * -1);
+        }
         if (!player.body.blocked.down) player.anims.play('jump');
         if (player.body.blocked.down && Phaser.Input.Keyboard.JustDown(cursors.up)) {
             player.setVelocityY(this.JUMP_VELOCITY);
