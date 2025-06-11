@@ -1,5 +1,5 @@
-export default class Enemy extends Phaser.GameObjects.Sprite{
-    constructor(scene, x, y) {
+export default class Player extends Phaser.Physics.Arcade.Sprite{
+    constructor(scene, x, y, texture = "platformer_characters") {
         super(scene, x, y, texture);
 
         scene.add.existing(this);
@@ -18,6 +18,32 @@ export default class Enemy extends Phaser.GameObjects.Sprite{
         //Create control inputs
         this.cursors = scene.input.keyboard.createCursorKeys();
         this.rKey = scene.input.keyboard.addKey('R');
+
+        //Make VFX
+        
+        this.vfx = {
+            walking: scene.add.particles(0, 0, "kenny-particles", {
+            frame: ['spark_03.png', 'spark_04.png'],
+            random: true,
+            scale: { start: 0.03, end: 0.1 },
+            maxAliveParticles: 64,
+            lifespan: 300,
+            gravityY: 100,
+            alpha: { start: 1, end: 0.1 },
+            }),
+            magnetise: scene.add.particles(0, 0, "kenny-particles", {
+            frame: ['circle_01.png', 'circle_02.png'],
+            random: true,
+            scale: { start: 0.03, end: 0.1 },
+            maxAliveParticles: 64,
+            lifespan: 350,
+            gravityY: -400,
+            alpha: { start: 1, end: 0.1 },
+            })
+        };
+
+        this.vfx.walking.stop();
+        this.vfx.magnetise.stop();
     }
 
      update(groundLayer, spawn, finishGroup, totalCoinsText) {
@@ -52,7 +78,8 @@ export default class Enemy extends Phaser.GameObjects.Sprite{
             this.scene.scene.restart();
         }
 
-        this.handleMagnetism(groundLayer);
+        //Commented out for now because I need a tilelayer
+        //this.handleMagnetism(groundLayer);
     }
 
     handleMagnetism(groundLayer) {

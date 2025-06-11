@@ -1,27 +1,26 @@
-// Jim Whitehead
-// Created: 4/14/2024
-// Phaser: 3.70.0
-//
-// BuildAMonster
-//
-// A template for building a monster using a series of assets from
-// a sprite atlas.
-// 
-// Art assets from Kenny Assets "Monster Builder Pack" set:
-// https://kenney.nl/assets/monster-builder-pack
 
-"use strict"
+//"use strict"
+import LevelOne from './Scenes/LevelOne.js';
 
 // game config
 let config = {
     parent: 'phaser-game',
     type: Phaser.CANVAS,
     render: {
-        pixelArt: true  // prevent pixel art from getting blurred when scaled
+        pixelArt: true
     },
     width: 800,
     height: 600,
+
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 600 }, // Or whatever gravity you want
+            debug: true // Set to false if you don't want to see collision boxes
+        }
+    },
+
     scene: [LevelOne]
-}
+};
 
 const game = new Phaser.Game(config);
