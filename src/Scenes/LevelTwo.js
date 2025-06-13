@@ -26,7 +26,7 @@ export default class LevelTwo extends Phaser.Scene {
         this.player.setDepth(1);
         this.map = this.add.tilemap("platformer-level-2", 16, 16, 40, 30);
         this.physics.world.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
-        this.tileset = this.map.addTilesetImage("AssetSheet_Pink", "pink_tiles");
+        this.tileset = this.map.addTilesetImage("pink map", "pink map");
         this.groundLayer = this.map.createLayer("Ground", this.tileset, 0, 0);
         this.backgroundLayer = this.map.createLayer("Background", this.tileset, 0, 0);
         
