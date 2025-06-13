@@ -57,6 +57,6 @@ export default class Load extends Phaser.Scene {
             repeat: -1
         });
 
-       this.scene.start("LevelThree");
+       this.scene.start("Start");
     }
 }
