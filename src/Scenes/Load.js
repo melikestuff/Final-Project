@@ -10,6 +10,8 @@ export default class Load extends Phaser.Scene {
         // Load characters spritesheet
         // this.load.atlas("platformer_characters", "monoChromeCharacter_packed.png", "monoChromeCharacter_packed.json");
 
+        this.load.image("background", "FloatingIslands_Assets/ParalaxBackground/BackgroundGradient_Purple.png");
+
         // Load tilemap information
         this.load.image("platformer_tiles", "AssetSheet_Green.png");
         this.load.image("yellow_tiles", "AssetSheet_Yellow.png");
