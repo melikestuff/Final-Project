@@ -26,6 +26,8 @@ export default class Load extends Phaser.Scene {
         });
 
         this.load.multiatlas("kenny-particles", "kenny-particles.json");
+        this.load.audio('jumpSound','cartoon-jump.mp3');
+        
     }
 
     create() {
@@ -56,7 +58,7 @@ export default class Load extends Phaser.Scene {
             frameRate: 1,
             repeat: -1
         });
-
+        
        this.scene.start("Start");
     }
 }

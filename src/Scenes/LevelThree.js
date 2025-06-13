@@ -41,6 +41,7 @@ export default class LevelThree extends Phaser.Scene {
             console.log("reached finish");
             this.scene.start('Start');
         });
+
     }
 
     update() {

@@ -31,6 +31,7 @@ export default class LevelTwo extends Phaser.Scene {
         });
 
         this.physics.add.collider(this.player, this.groundLayer);
+        
     }
 
     update() {
