@@ -28,11 +28,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         //this.y = 10;
         this.crouching = false;
 
-
+        //dashing
+        this.dashing = false;
+        this.dashed = false;
+        this.direction = false;
 
         //Create control inputs
         this.cursors = scene.input.keyboard.createCursorKeys();
         this.rKey = scene.input.keyboard.addKey('R');
+        this.spaceKey = scene.input.keyboard.addKey('SPACE');
         
         //Make VFX
         
@@ -66,10 +70,36 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
     update(groundLayer, spawn, finishGroup, totalCoinsText) {
         const player = this;
         const cursors = this.cursors;
+        if (this.spaceKey.isDown) {
+            if (this.dashed == false){
+            this.dashed = true;
+            this.dashing = true;
+            this.MAXSPEED = 1000000;
+            if (this.direction) {
+                player.body.setVelocityX(500);
+            } else {
+                player.body.setVelocityX(-500);
+            }
+            this.time.delayedCall(100, () => {
+                this.dashing = false;
+                this.MAXSPEED = 150;
+            }, null, this);
+            this.time.delayedCall(3000, () => {
+                this.dashed = false;
+            }, null, this);
+        }
+        }
+
+        if (player.body.velocity.x > this.MAXSPEED) {
+            player.setVelocityX(this.MAXSPEED);
+        }
+        if (player.body.velocity.x < this.MAXSPEED * -1) {
+            player.setVelocityX(this.MAXSPEED * -1);
+        }
 
         if (cursors.left.isDown) {
             player.setAccelerationX(-this.ACCELERATION);
-
+            this.direction = false;
             player.setFlip(true, false);
             player.anims.play('walk', true);
             console.log("Walking");
@@ -78,6 +108,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         } else if (cursors.right.isDown) {
             player.setAccelerationX(this.ACCELERATION);
             player.resetFlip();
+            this.direction = true;
             player.anims.play('walk', true);
             console.log("Walking");
             if (player.body.blocked.down) this.vfx.walking.start();
