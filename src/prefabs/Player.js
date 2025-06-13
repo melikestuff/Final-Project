@@ -70,6 +70,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
     update(groundLayer, spawn, finishGroup, totalCoinsText) {
         const player = this;
         const cursors = this.cursors;
+        
         if (this.spaceKey.isDown) {
             if (this.dashed == false){
             this.dashed = true;
@@ -80,11 +81,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
             } else {
                 player.body.setVelocityX(-500);
             }
-            this.time.delayedCall(100, () => {
+            this.scene.time.delayedCall(100, () => {
                 this.dashing = false;
                 this.MAXSPEED = 150;
             }, null, this);
-            this.time.delayedCall(3000, () => {
+            this.scene.time.delayedCall(3000, () => {
                 this.dashed = false;
             }, null, this);
         }
