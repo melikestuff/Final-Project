@@ -1,5 +1,12 @@
-**Build A Monster**
+**Final Project CMPM120**
 
-Template code for displaying sprites from a spritesheet Atlas (XML) using Phaser 3.
+Your a cat who can grapple onto trees and dash around the world!
 
-Uses Kenny Assets "[Monster Builder Pack](https://kenney.nl/assets/monster-builder-pack)" set, with gratitude.
+Credits
+Benjamin Nguyen
+Hank Liu
+Joseph Dadlez
+
+Assets used
+https://bowpixel.itch.io/meow-cat-85-animation
+https://penzilla.itch.io/floating-islands
