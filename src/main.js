@@ -1,6 +1,8 @@
 
 //"use strict"
+import Load from './Scenes/Load.js';
 import LevelOne from './Scenes/LevelOne.js';
+import LevelThree from './Scenes/LevelThree.js';
 
 // game config
 let config = {
@@ -20,7 +22,7 @@ let config = {
         }
     },
 
-    scene: [LevelOne]
+    scene: [Load, LevelOne, LevelThree]
 };
 
 const game = new Phaser.Game(config);
