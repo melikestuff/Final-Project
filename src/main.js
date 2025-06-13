@@ -22,7 +22,7 @@ let config = {
     },
     width: 640,
     height: 480,
-    scene: [Load, LevelOne, LevelThree],
+    scene: [Load,Start, LevelOne, LevelTwo,LevelThree],
     fps: { forceSetTimeOut: true, target: 60 }
 };
 
