@@ -39,6 +39,7 @@ export default class LevelOne extends Phaser.Scene {
 
         this.groundLayer = this.map.createLayer("Ground", this.tileset, 0, 0);
         this.grappleLayer = this.map.createLayer("Grapple_Stuff", this.tileset, 0, 0);
+        this.grappleLayer = this.map.createLayer("background", this.tileset, 0, 0);
 
         
         
@@ -58,7 +59,17 @@ export default class LevelOne extends Phaser.Scene {
         });
 
         this.physics.add.collider(this.player, this.groundLayer);
-
+        this.finish = this.map.createFromObjects("finish", {
+            name: "finish",
+            key: "tilemap_green",
+            frame: 3
+        });
+        console.log(this.finish);
+        this.physics.world.enable(this.finish, Phaser.Physics.Arcade.STATIC_BODY);
+        this.physics.add.overlap(this.player, this.finish, (obj1, obj2) => {
+            console.log("reached finish");
+            this.scene.start('Start');
+        });
         this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
         this.cameras.main.startFollow(this.player, true, 0.25, 0.25); // (target, [,roundPixels][,lerpX][,lerpY])
         this.cameras.main.setDeadzone(50, 50);

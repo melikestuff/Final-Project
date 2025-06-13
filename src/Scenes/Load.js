@@ -32,6 +32,10 @@ export default class Load extends Phaser.Scene {
             frameWidth: 16,
             frameHeight: 16
         });
+        this.load.spritesheet("tilemap_green", "AssetSheet_Green.png", {
+            frameWidth: 16,
+            frameHeight: 16
+        });
 
         this.load.multiatlas("kenny-particles", "kenny-particles.json");
         this.load.audio('jumpSound','cartoon-jump.mp3');
