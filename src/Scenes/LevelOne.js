@@ -84,6 +84,7 @@ export default class LevelOne extends Phaser.Scene {
         });
 
         this.physics.add.collider(this.player, this.groundLayer);
+
     }
 
     update() {
