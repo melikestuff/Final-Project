@@ -3,6 +3,10 @@ export default class CreditsScene extends Phaser.Scene {
         super("CreditsScene");
     }
     create() {
+        
+    //Add background into game
+    const bg = this.add.image(0, 0, "background").setOrigin(0, 0);
+    bg.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
 
     this.add.text(280, 75, "Credits!", {
         font: 'bold 35px Arial',
@@ -23,7 +27,7 @@ export default class CreditsScene extends Phaser.Scene {
 
     backButton.setInteractive({ useHandCursor: true });
     backButton.on("pointerdown", () => {
-        this.scene.start("StartScreen");
-    });
+        this.scene.start("Start");
+    }); 
     }
 }
