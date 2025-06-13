@@ -16,6 +16,10 @@ export default class LevelThree extends Phaser.Scene {
     }
 
     create() {
+        //Add background into game
+        const bg = this.add.image(0, 0, "background").setOrigin(0, 0);
+        bg.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
+        
         let my = this.my
         this.player = new Player(this, 100, 200); //This line spawns a new "Prefab" of the player here;
         this.player.scale = 0.75;
@@ -41,6 +45,11 @@ export default class LevelThree extends Phaser.Scene {
             console.log("reached finish");
             this.scene.start('Start');
         });
+
+        this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
+        this.cameras.main.startFollow(this.player, true, 0.25, 0.25); // (target, [,roundPixels][,lerpX][,lerpY])
+        this.cameras.main.setDeadzone(50, 50);
+        this.cameras.main.setZoom(2);
 
     }
 

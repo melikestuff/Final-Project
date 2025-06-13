@@ -13,7 +13,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         this.setCollideWorldBounds(true);
         this.ACCELERATION = 300;
         this.DRAG = 2000;
-        this.JUMP_VELOCITY = -500;
+        this.JUMP_VELOCITY = -300;
         this.PARTICLE_VELOCITY = 50;
         this.CRAWL_SPEED = 75
         this.MAX_SPEED = 350
@@ -62,6 +62,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
 
         this.vfx.walking.stop();
         this.vfx.magnetise.stop();
+
+        
         
     }
     
@@ -102,7 +104,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
             this.direction = false;
             player.setFlip(true, false);
             player.anims.play('walk', true);
-            console.log("Walking");
+            //console.log("Walking");
             if (player.body.blocked.down) this.vfx.walking.start();
             this.vfx.walking.startFollow(player, player.displayWidth/2-10, player.displayHeight/2-5, false);
         } else if (cursors.right.isDown) {
@@ -110,11 +112,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
             player.resetFlip();
             this.direction = true;
             player.anims.play('walk', true);
-            console.log("Walking");
+            //console.log("Walking");
             if (player.body.blocked.down) this.vfx.walking.start();
             this.vfx.walking.startFollow(player, player.displayWidth/2-10, player.displayHeight/2-5, false);
         } else {
-            console.log("Idle");
+            //console.log("Idle");
             player.setAccelerationX(0);
             player.setDragX(this.DRAG);
             player.anims.play('idle');
