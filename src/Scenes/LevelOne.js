@@ -26,9 +26,35 @@ export default class LevelOne extends Phaser.Scene {
     
 
     create() {
-        //Add background into game
-        const bg = this.add.image(0, 0, "background").setOrigin(0, 0);
-        bg.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
+        //create player anims
+        this.anims.create({
+            key: 'walk',
+            frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 4 }), // Adjust as needed
+            frameRate: 10,
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'idle',
+            frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 4 }),
+            frameRate: 1,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'jump',
+            frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 4 }),
+            frameRate: 1,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'crouch',
+            frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 4 }),
+            frameRate: 1,
+            repeat: -1
+        });
+        //const cat = this.add.sprite(100, 100, 'cat');
+
 
         let my = this.my
 
@@ -39,7 +65,7 @@ export default class LevelOne extends Phaser.Scene {
         this.tileset = this.map.addTilesetImage("AssetSheet_Green", "platformer_tiles");
 
         this.groundLayer = this.map.createLayer("Ground", this.tileset, 0, 0);
-        this.grappleLayer = this.map.createLayer("Grapple_Stuff", this.tileset, 0,0)
+        this.grappleLayer = this.map.createLayer("Grapple_Stuff", this.tileset, 0, 0);
 
         
         
@@ -60,22 +86,6 @@ export default class LevelOne extends Phaser.Scene {
 
         this.physics.add.collider(this.player, this.groundLayer);
 
-        this.physics.add.collider(this.player, this.groundLayer);
-        this.finish = this.map.createFromObjects("finish", {
-            name: "finish",
-            key: "tilemap_yellow",
-            frame: 3
-        });
-        this.physics.world.enable(this.finish, Phaser.Physics.Arcade.STATIC_BODY);
-        this.physics.add.overlap(this.player, this.finish, (obj1, obj2) => {
-            console.log("reached finish");
-            this.scene.start('Start');
-        });
-
-        this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
-        this.cameras.main.startFollow(this.player, true, 0.25, 0.25); // (target, [,roundPixels][,lerpX][,lerpY])
-        this.cameras.main.setDeadzone(50, 50);
-        this.cameras.main.setZoom(2);
     }
 
     update() {

@@ -15,9 +15,10 @@ export default class Load extends Phaser.Scene {
         // Load tilemap information
         this.load.image("platformer_tiles", "AssetSheet_Green.png");
         this.load.image("yellow_tiles", "AssetSheet_Yellow.png");
-        this.load.image("pink_tiles", "AssetSheet_Pink.png");
+        this.load.image("pink map", "AssetSheet_Pink.png");
 
-        this.load.tilemapTiledJSON("platformer-level-1", "Green_Level.json");   // Tilemap in JSON
+        this.load.tilemapTiledJSON("platformer-level-1", "Green_Level.json");
+        this.load.tilemapTiledJSON("platformer-level-2", "LevelTwo.tmj");   // Tilemap in JSON
 
         this.load.spritesheet("tilemap_yellow", "AssetSheet_Yellow.png", {
             frameWidth: 16,
@@ -26,6 +27,10 @@ export default class Load extends Phaser.Scene {
         this.load.spritesheet('cat', 'Cat_85_Animations/Cat_Grey_White.png', {
             frameWidth: 32,
             frameHeight: 32
+        });
+        this.load.spritesheet("tilemap_pink", "AssetSheet_Pink.png", {
+            frameWidth: 16,
+            frameHeight: 16
         });
 
         this.load.multiatlas("kenny-particles", "kenny-particles.json");
