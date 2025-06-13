@@ -3,6 +3,7 @@
 import Load from './Scenes/Load.js'; 
 import LevelOne from './Scenes/LevelOne.js';
 import LevelThree from './Scenes/LevelThree.js';
+import StartScreen from './Scenes/StartScreen.js';
 
 // game config
 let config = {
@@ -22,7 +23,7 @@ let config = {
     },
     width: 640,
     height: 480,
-    scene: [Load,Start, LevelOne, LevelTwo,LevelThree],
+    scene: [Load,StartScreen, LevelOne, LevelTwo,LevelThree],
     fps: { forceSetTimeOut: true, target: 60 }
 };
 
