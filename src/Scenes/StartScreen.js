@@ -65,7 +65,7 @@ export default class StartScreen extends Phaser.Scene {
         buttonThree.on("pointerout", () => button.setStyle({ fill: "#00ff00" }));
         // Click handler
         buttonThree.on("pointerdown", () => {
-            this.scene.start("buttonThree");
+            this.scene.start("LevelThree");
         });
 
         //Credits Button
