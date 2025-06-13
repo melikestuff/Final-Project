@@ -2,13 +2,9 @@ export default class CreditsScene extends Phaser.Scene {
     constructor() {
         super("CreditsScene");
     }
-
-    init(data) {
-        this.beatLevelOne = data.completion;
-    }
     create() {
 
-    this.add.text(350, 75, "Credits!", {
+    this.add.text(280, 75, "Credits!", {
         font: 'bold 35px Arial',
         fill: "#ffffff"
     });
@@ -18,7 +14,7 @@ export default class CreditsScene extends Phaser.Scene {
         fill: "#ffffff"
     });
 
-    const backButton = this.add.text(350, 500, "Back", {
+    const backButton = this.add.text(280, 350, "Back", {
         font: "bold 30px Arial",
         fill: "#000000",
         backgroundColor: "#ffffff",

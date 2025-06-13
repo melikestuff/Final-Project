@@ -8,8 +8,13 @@ export default class StartScreen extends Phaser.Scene {
     }
 
     create() {
-        //TItle
-        this.add.text(250, 75, `Cat Stuff`, { fill: '#f0ff39', font: 'bold 40px Arial'});
+        
+        //Add background into game
+        const bg = this.add.image(0, 0, "background").setOrigin(0, 0);
+        bg.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
+
+        //Title
+        this.add.text(240, 75, `Cat Stuff`, { fill: '#f0ff39', font: 'bold 40px Arial'});
 
         //Level One
         const button = this.add.text(100, 200, "Level One", {
@@ -69,7 +74,7 @@ export default class StartScreen extends Phaser.Scene {
         });
 
         //Credits Button
-        const buttonCC = this.add.text(100, 350, "Credits", {
+        const buttonCC = this.add.text(240, 375, "Credits", {
             font: 'bold 35px Arial',
             fill: "#000000",
             backgroundColor: "#ffffff",
