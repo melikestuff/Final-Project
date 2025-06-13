@@ -34,11 +34,12 @@ export default class LevelOne extends Phaser.Scene {
 
         this.add.text(0, 0, 'Hello World', { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif' });
 
-        this.map = this.add.tilemap("platformer-level-1", 16, 16, 180, 60);
+        this.map = this.add.tilemap("platformer-level-1", 16, 16, 40, 30);
 
         this.tileset = this.map.addTilesetImage("AssetSheet_Green", "platformer_tiles");
 
         this.groundLayer = this.map.createLayer("Ground", this.tileset, 0, 0);
+        this.grappleLayer = this.map.createLayer("Grapple_Stuff", this.tileset, 0,0)
 
         
         
