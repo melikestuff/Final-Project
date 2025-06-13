@@ -26,39 +26,12 @@ export default class LevelOne extends Phaser.Scene {
     
 
     create() {
-        //create player anims
-        this.anims.create({
-            key: 'walk',
-            frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 4 }), // Adjust as needed
-            frameRate: 10,
-            repeat: -1
-        });
-        this.anims.create({
-            key: 'idle',
-            frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 4 }),
-            frameRate: 1,
-            repeat: -1
-        });
-
-        this.anims.create({
-            key: 'jump',
-            frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 4 }),
-            frameRate: 1,
-            repeat: -1
-        });
-
-        this.anims.create({
-            key: 'crouch',
-            frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 4 }),
-            frameRate: 1,
-            repeat: -1
-        });
-        //const cat = this.add.sprite(100, 100, 'cat');
-
+        
+        //Add background into game
+        const bg = this.add.image(0, 0, "background").setOrigin(0, 0);
+        bg.setDisplaySize(this.sys.game.config.width + 800, this.sys.game.config.height);
 
         let my = this.my
-
-        this.add.text(0, 0, 'Hello World', { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif' });
 
         this.map = this.add.tilemap("platformer-level-1", 16, 16, 40, 30);
 
@@ -86,6 +59,10 @@ export default class LevelOne extends Phaser.Scene {
 
         this.physics.add.collider(this.player, this.groundLayer);
 
+        this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
+        this.cameras.main.startFollow(this.player, true, 0.25, 0.25); // (target, [,roundPixels][,lerpX][,lerpY])
+        this.cameras.main.setDeadzone(50, 50);
+        this.cameras.main.setZoom(2);
     }
 
     update() {

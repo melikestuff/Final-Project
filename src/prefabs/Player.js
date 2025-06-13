@@ -195,10 +195,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
     handleMagnetism(groundLayer) {
         
         const pointer = this.scene.input.activePointer;
-        const tile = groundLayer.getTileAtWorldXY(pointer.worldX, pointer.worldY);
+        const worldPoint = this.scene.cameras.main.getWorldPoint(pointer.x, pointer.y);
+        const tile = groundLayer.getTileAtWorldXY(worldPoint.x, worldPoint.y);
         const player = this;
 
-        if (tile && tile.properties.grapple) {
+
+        if (tile != null && tile.properties && tile.properties.grapple) {
             const dx = tile.getCenterX() - player.x;
             const dy = tile.getCenterY() - player.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
@@ -209,7 +211,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
                 player.setVelocity((dx / dist) * speed, (dy / dist) * speed);
                 this.vfx.magnetise.emitParticleAt(tile.pixelX + tile.width/2, tile.pixelY + tile.height/2, 10);
                 if (!this.scene.isMagnetised) {
-                    this.scene.magnetiseSound.play();
                     this.scene.isMagnetised = true;
                     console.log("Should work");
                 }
@@ -218,7 +219,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         }
 
         if (this.scene.isMagnetised) {
-            this.scene.magnetiseSound.stop();
             this.scene.isMagnetised = false;
         }
     }
