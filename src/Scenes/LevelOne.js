@@ -5,7 +5,7 @@ export default class LevelOne extends Phaser.Scene {
         super('LevelOne');
     }
     init(){
-        this.SCALE = 0.5;
+        this.SCALE = 1;
     }
 
     // Use preload to load art and sound assets before the scene starts running.
@@ -14,10 +14,48 @@ export default class LevelOne extends Phaser.Scene {
 
         this.load.scenePlugin('AnimatedTiles', './lib/AnimatedTiles.js', 'animatedTiles', 'animatedTiles');
         
+        //Player assets load
+        this.load.spritesheet('cat', 'Cat_85_Animations/Cat_Grey_White.png', {
+            frameWidth: 32,
+            frameHeight: 32
+        });
         
+        this.load.multiatlas("kenny-particles", "kenny-particles.json");
     }
 
+    
+
     create() {
+        //create player anims
+        this.anims.create({
+            key: 'walk',
+            frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 4 }), // Adjust as needed
+            frameRate: 10,
+            repeat: -1
+        });
+        this.anims.create({
+            key: 'idle',
+            frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 4 }),
+            frameRate: 1,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'jump',
+            frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 4 }),
+            frameRate: 1,
+            repeat: -1
+        });
+
+        this.anims.create({
+            key: 'crouch',
+            frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 4 }),
+            frameRate: 1,
+            repeat: -1
+        });
+        //const cat = this.add.sprite(100, 100, 'cat');
+
+
         let my = this.my
 
         this.add.text(0, 0, 'Hello World', { fontFamily: 'Georgia, "Goudy Bookletter 1911", Times, serif' });
@@ -38,7 +76,8 @@ export default class LevelOne extends Phaser.Scene {
             playerSpawnX = spawnPoint.x;
             playerSpawnY = spawnPoint.y;
         }
-        this.player = new Player(this, spawnPoint.x, spawnPoint.y).setScale(this.SCALE); //This line spawns a new "Prefab" of the player here;
+        this.player = new Player(this, spawnPoint.x, spawnPoint.y, this.SCALE);//This line spawns a new "Prefab" of the player here;
+        
        
         this.groundLayer.setCollisionByProperty({
             collides: true

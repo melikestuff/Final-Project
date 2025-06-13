@@ -1,10 +1,11 @@
 
 export default class Player extends Phaser.Physics.Arcade.Sprite{
-    constructor(scene, x, y, texture = "platformer_characters") {
-        super(scene, x, y, texture);
+    constructor(scene, x, y, scale) {
+        super(scene, x, y);
 
         scene.add.existing(this);
         scene.physics.add.existing(this);
+        this.setScale(scale);
 
         //Incase scene reference is needed
         this.scene = scene;
@@ -19,14 +20,20 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         this.MAX_SPEED = 350
 
         //crouching
-        this.originalHeight = this.height;
-        this.originalWidth = this.width;
+        this.originalHeight = this.displayHeight;
+        this.originalWidth = this.displayWidth;
+        this.body.setSize(20, 18, false);
+        this.body.setOffset(7, 12);
+
+        //this.y = 10;
         this.crouching = false;
+
+
 
         //Create control inputs
         this.cursors = scene.input.keyboard.createCursorKeys();
         this.rKey = scene.input.keyboard.addKey('R');
-
+        
         //Make VFX
         
         this.vfx = {
@@ -52,7 +59,9 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
 
         this.vfx.walking.stop();
         this.vfx.magnetise.stop();
+        
     }
+    
 
     update(groundLayer, spawn, finishGroup, totalCoinsText) {
         const player = this;
@@ -60,24 +69,30 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
 
         if (cursors.left.isDown) {
             player.setAccelerationX(-this.ACCELERATION);
-            player.resetFlip();
-            // player.anims.play('walk', true);
+
+            player.setFlip(true, false);
+            player.anims.play('walk', true);
+            console.log("Walking");
             if (player.body.blocked.down) this.vfx.walking.start();
             this.vfx.walking.startFollow(player, player.displayWidth/2-10, player.displayHeight/2-5, false);
         } else if (cursors.right.isDown) {
             player.setAccelerationX(this.ACCELERATION);
-            player.setFlip(true, false);
-            // player.anims.play('walk', true);
+            player.resetFlip();
+            player.anims.play('walk', true);
+            console.log("Walking");
             if (player.body.blocked.down) this.vfx.walking.start();
             this.vfx.walking.startFollow(player, player.displayWidth/2-10, player.displayHeight/2-5, false);
         } else {
+            console.log("Idle");
             player.setAccelerationX(0);
             player.setDragX(this.DRAG);
-            // player.anims.play('idle');
+            player.anims.play('idle');
             this.vfx.walking.stop();
         }
 
-        if (!player.body.blocked.down) player.anims.play('jump');
+        if (!player.body.blocked.down) {
+            player.anims.play('jump');
+        }
         if (player.body.blocked.down && Phaser.Input.Keyboard.JustDown(cursors.up)) {
             player.setVelocityY(this.JUMP_VELOCITY);
         }
