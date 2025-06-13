@@ -32,7 +32,7 @@ export default class Load extends Phaser.Scene {
        // add the animations here?
         this.anims.create({
             key: 'walk',
-            frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 4 }), // Adjust as needed
+            frames: this.anims.generateFrameNumbers('cat', { start: 60, end: 64 }), // Adjust as needed
             frameRate: 10,
             repeat: -1
         });
@@ -45,7 +45,7 @@ export default class Load extends Phaser.Scene {
 
         this.anims.create({
             key: 'jump',
-            frames: this.anims.generateFrameNumbers('cat', { start: 0, end: 4 }),
+            frames: this.anims.generateFrameNumbers('cat', { start: 200, end: 200 }),
             frameRate: 1,
             repeat: -1
         });

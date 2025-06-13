@@ -176,6 +176,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
 
                 player.body.setSize(this.originalWidth, crouchHeight, false);
                 player.body.setOffset(0, offsetY);
+
+                
             }
             
         } 
@@ -183,7 +185,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         else if (this.crouching && (!cursors.down.isDown || !player.body.blocked.down) && canStandUp) {
             this.crouching = false;
             
-            player.body.setSize(this.originalWidth, this.originalHeight, false);
+            this.body.setSize(20, 18, false);
+            this.body.setOffset(7, 12);
             player.body.setOffset(0, 0);
         }
     }
