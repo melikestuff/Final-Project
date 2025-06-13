@@ -31,6 +31,16 @@ export default class LevelThree extends Phaser.Scene {
         });
 
         this.physics.add.collider(this.player, this.groundLayer);
+        this.finish = this.map.createFromObjects("finish", {
+            name: "finish",
+            key: "tilemap_yellow",
+            frame: 3
+        });
+        this.physics.world.enable(this.finish, Phaser.Physics.Arcade.STATIC_BODY);
+        this.physics.add.overlap(this.player, this.finish, (obj1, obj2) => {
+            console.log("reached finish");
+            this.scene.start('Start');
+        });
     }
 
     update() {
