@@ -1,6 +1,6 @@
 import Player from '../prefabs/Player.js';
 
-export default class LevelThree extends Phaser.Scene {
+export default class LevelTwo extends Phaser.Scene {
     constructor() {
         super('LevelTwo');
     }

@@ -4,6 +4,7 @@ import Load from './Scenes/Load.js';
 import LevelOne from './Scenes/LevelOne.js';
 import LevelThree from './Scenes/LevelThree.js';
 import StartScreen from './Scenes/StartScreen.js';
+import LevelTwo from './Scenes/LevelTwo.js';
 
 // game config
 let config = {
