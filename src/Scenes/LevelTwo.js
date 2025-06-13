@@ -2,7 +2,7 @@ import Player from '../prefabs/Player.js';
 
 export default class LevelThree extends Phaser.Scene {
     constructor() {
-        super('LevelThree');
+        super('LevelTwo');
     }
 
     // Use preload to load art and sound assets before the scene starts running.
