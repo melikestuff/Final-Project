@@ -26,7 +26,8 @@ export default class LevelOne extends Phaser.Scene {
     
 
     create() {
-        
+        //index element
+        document.getElementById('description').innerHTML = '<h2>Cat game</h2><br> Arrow keys to move // Mouse hover over pipes to gravitate towards them // space to dash //R to reset';
         //Add background into game
         const bg = this.add.image(0, 0, "background").setOrigin(0, 0);
         bg.setDisplaySize(this.sys.game.config.width + 800, this.sys.game.config.height);
