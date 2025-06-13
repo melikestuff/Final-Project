@@ -138,7 +138,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         this.handleCrouching(groundLayer);
 
         //Commented out for now because I need a tilelayer
-        //this.handleMagnetism(groundLayer);
+        this.handleMagnetism(groundLayer);
     }
     handleCrouching(groundLayer) {
         const player = this;
@@ -193,6 +193,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
         }
     }
     handleMagnetism(groundLayer) {
+        
         const pointer = this.scene.input.activePointer;
         const tile = groundLayer.getTileAtWorldXY(pointer.worldX, pointer.worldY);
         const player = this;
@@ -210,6 +211,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
                 if (!this.scene.isMagnetised) {
                     this.scene.magnetiseSound.play();
                     this.scene.isMagnetised = true;
+                    console.log("Should work");
                 }
                 return;
             }
