@@ -31,7 +31,7 @@ export default class StartScreen extends Phaser.Scene {
         });
 
         //Level two
-        const buttonTwo = this.add.text(250, 200, "Level One", {
+        const buttonTwo = this.add.text(250, 200, "Level Two", {
             font: 'bold 35px Arial',
             fill: "#000000",
             backgroundColor: "#ffffff",
@@ -50,7 +50,7 @@ export default class StartScreen extends Phaser.Scene {
         });
 
         //Level Three
-        const buttonThree = this.add.text(400, 200, "Level One", {
+        const buttonThree = this.add.text(400, 200, "Level Three", {
             font: 'bold 35px Arial',
             fill: "#000000",
             backgroundColor: "#ffffff",
@@ -69,7 +69,7 @@ export default class StartScreen extends Phaser.Scene {
         });
 
         //Credits Button
-        const buttonCC = this.add.text(100, 350, "Credits and Controls", {
+        const buttonCC = this.add.text(100, 350, "Credits", {
             font: 'bold 35px Arial',
             fill: "#000000",
             backgroundColor: "#ffffff",
