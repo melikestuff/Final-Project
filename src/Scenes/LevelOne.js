@@ -91,6 +91,6 @@ export default class LevelOne extends Phaser.Scene {
     update() {
         //The update method in the prefab is it's own scene update()
         //So we have to call the player update func in here
-        this.player.update(null, null, null, null); 
+        this.player.update(this.grappleLayer, null, null, null); 
     }
 }
