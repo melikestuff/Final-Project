@@ -13,7 +13,7 @@ export default class StartScreen extends Phaser.Scene {
 
         //Level One
         const button = this.add.text(100, 200, "Level One", {
-            font: 'bold 35px Arial',
+            font: 'bold 20px Arial',
             fill: "#000000",
             backgroundColor: "#ffffff",
             
@@ -23,8 +23,8 @@ export default class StartScreen extends Phaser.Scene {
         // Make it interactive
         button.setInteractive({ useHandCursor: true });
         // Hover effects
-        button.on("pointerover", () => button.setStyle({ fill: "#ffff00" }));
-        button.on("pointerout", () => button.setStyle({ fill: "#00ff00" }));
+        button.on("pointerover", () => button.setStyle({ fill: "#00ff00" }));
+        button.on("pointerout", () => button.setStyle({ fill: "#000000" }));
         // Click handler
         button.on("pointerdown", () => {
             this.scene.start("LevelOne");
@@ -32,7 +32,7 @@ export default class StartScreen extends Phaser.Scene {
 
         //Level two
         const buttonTwo = this.add.text(250, 200, "Level Two", {
-            font: 'bold 35px Arial',
+            font: 'bold 20px Arial',
             fill: "#000000",
             backgroundColor: "#ffffff",
             
@@ -42,8 +42,8 @@ export default class StartScreen extends Phaser.Scene {
         // Make it interactive
         buttonTwo.setInteractive({ useHandCursor: true });
         // Hover effects
-        buttonTwo.on("pointerover", () => button.setStyle({ fill: "#ffff00" }));
-        buttonTwo.on("pointerout", () => button.setStyle({ fill: "#00ff00" }));
+        buttonTwo.on("pointerover", () => buttonTwo.setStyle({ fill: "#00ff00" }));
+        buttonTwo.on("pointerout", () => buttonTwo.setStyle({ fill: "#000000" }));
         // Click handler
         buttonTwo.on("pointerdown", () => {
             this.scene.start("LevelTwo");
@@ -51,7 +51,7 @@ export default class StartScreen extends Phaser.Scene {
 
         //Level Three
         const buttonThree = this.add.text(400, 200, "Level Three", {
-            font: 'bold 35px Arial',
+            font: 'bold 20px Arial',
             fill: "#000000",
             backgroundColor: "#ffffff",
             
@@ -61,8 +61,8 @@ export default class StartScreen extends Phaser.Scene {
         // Make it interactive
         buttonThree.setInteractive({ useHandCursor: true });
         // Hover effects
-        buttonThree.on("pointerover", () => button.setStyle({ fill: "#ffff00" }));
-        buttonThree.on("pointerout", () => button.setStyle({ fill: "#00ff00" }));
+        buttonThree.on("pointerover", () => buttonThree.setStyle({ fill: "#00ff00" }));
+        buttonThree.on("pointerout", () => buttonThree.setStyle({ fill: "#000000" }));
         // Click handler
         buttonThree.on("pointerdown", () => {
             this.scene.start("LevelThree");
@@ -80,8 +80,8 @@ export default class StartScreen extends Phaser.Scene {
         buttonCC.setInteractive({ useHandCursor: true });
 
         // Hover effects
-        buttonCC.on("pointerover", () => buttonCC.setStyle({ fill: "#ffff00" }));
-        buttonCC.on("pointerout", () => buttonCC.setStyle({ fill: "#00ff00" }));
+        buttonCC.on("pointerover", () => buttonCC.setStyle({ fill: "#00ff00" }));
+        buttonCC.on("pointerout", () => buttonCC.setStyle({ fill: "#000000" }));
 
         // Click handler
         buttonCC.on("pointerdown", () => {
