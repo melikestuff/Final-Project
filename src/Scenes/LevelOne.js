@@ -39,7 +39,7 @@ export default class LevelOne extends Phaser.Scene {
 
         this.groundLayer = this.map.createLayer("Ground", this.tileset, 0, 0);
         this.grappleLayer = this.map.createLayer("Grapple_Stuff", this.tileset, 0, 0);
-        this.grappleLayer = this.map.createLayer("background", this.tileset, 0, 0);
+        this.bgLayer = this.map.createLayer("background", this.tileset, 0, 0);
 
         
         

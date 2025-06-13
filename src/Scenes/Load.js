@@ -17,7 +17,7 @@ export default class Load extends Phaser.Scene {
         this.load.image("yellow_tiles", "AssetSheet_Yellow.png");
         this.load.image("pink map", "AssetSheet_Pink.png");
 
-        this.load.tilemapTiledJSON("platformer-level-1", "Green_Level.json");
+        this.load.tilemapTiledJSON("platformer-level-1", "Green_Level.tmj");
         this.load.tilemapTiledJSON("platformer-level-2", "LevelTwo.tmj");   // Tilemap in JSON
 
         this.load.spritesheet("tilemap_yellow", "AssetSheet_Yellow.png", {
