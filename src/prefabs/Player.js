@@ -212,7 +212,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite{
                 this.vfx.magnetise.emitParticleAt(tile.pixelX + tile.width/2, tile.pixelY + tile.height/2, 10);
                 if (!this.scene.isMagnetised) {
                     this.scene.isMagnetised = true;
-                    console.log("Should work");
                 }
                 return;
             }

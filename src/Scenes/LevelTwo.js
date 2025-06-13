@@ -18,7 +18,7 @@ export default class LevelTwo extends Phaser.Scene {
     create() {
         //Add background into game
         const bg = this.add.image(0, 0, "background").setOrigin(0, 0);
-        bg.setDisplaySize(this.sys.game.config.width, this.sys.game.config.height);
+        bg.setDisplaySize(1000, this.sys.game.config.height);
 
         let my = this.my
         this.player = new Player(this, 100, 200); //This line spawns a new "Prefab" of the player here;
